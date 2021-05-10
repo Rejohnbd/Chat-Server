@@ -8,4 +8,11 @@ router.get("/", (req, res) => {
   });
 });
 
+router.post("/", (req, res) => {
+  pharmacyName = req.body.pharmacyName;
+  pharmacySlag = req.body.pharmacySlag.toLowerCase();
+  console.log(pharmacyName, pharmacySlag);
+  console.log(req.body);
+});
+
 module.exports = router;

@@ -1,13 +1,10 @@
 const mongoose = require("mongoose");
 
-mongoose.connect(
-  "mongodb://localhost/ChatApp",
-  { useNewUrlParser: true, useUnifiedTopology: true },
-  (err) => {
-    if (!err) {
-      console.log("Mongodb Connect Succedded");
-    } else {
-      console.log("Error in DB Connection: ", err);
-    }
-  }
-);
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "Connection Error: "));
+db.once("open", () => console.log("Connected to Mongodb"));
