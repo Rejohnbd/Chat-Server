@@ -22,7 +22,7 @@ router.post("/", (req, res) => {
           .exec()
           .then((pharmacy) => {
             if (pharmacy) {
-              return res.status(401).json({
+              return res.status(409).json({
                 message: "This Email Already Used.",
               });
             } else {

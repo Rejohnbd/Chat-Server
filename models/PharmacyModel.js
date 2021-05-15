@@ -12,6 +12,7 @@ const PharmacySchema = mongoose.Schema({
   },
   userType: { type: String, required: true },
   password: { type: String, required: true, bcrypt: true },
+  createdAt: { type: Date, default: Date.now },
 });
 
 module.exports = mongoose.model("Pharmacy", PharmacySchema);
