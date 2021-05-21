@@ -4,9 +4,14 @@ const bcrypt = require("bcryptjs");
 const Pharmacy = require("../../models/PharmacyModel");
 
 router.get("/", (req, res) => {
-  return res.status(200).json({
-    message: "Rejohn",
-  });
+  Pharmacy.find()
+    .exec()
+    .then((docs) => {
+      return res.status(200).json({ datas: docs });
+    })
+    .catch((err) => {
+      return res.status(500).json({ error: err });
+    });
 });
 
 router.post("/", (req, res) => {
